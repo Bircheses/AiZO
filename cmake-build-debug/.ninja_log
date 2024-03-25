@@ -1,0 +1,20 @@
+# ninja log v5
+2	311	7328326833929634	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+1	337	7328318156754603	CMakeFiles/Aizo.dir/main.cpp.obj	5810517dc9a7f28e
+312	372	7328326834520132	Aizo.exe	9fde02c339cea343
+3	218	7329398890327462	CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj	9776210e14efa966
+22	420	7329398892349205	CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj	4da1afb258b39649
+27	481	7329398892959730	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+481	710	7329398895236684	Aizo.exe	991b02533db6aaf6
+2	320	7329401046129897	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+321	382	7329401046735413	Aizo.exe	991b02533db6aaf6
+2	314	7329401482038834	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+315	376	7329401482644353	Aizo.exe	991b02533db6aaf6
+2	284	7329402536146838	CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj	4da1afb258b39649
+6	324	7329402536542188	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+324	386	7329402537142707	Aizo.exe	991b02533db6aaf6
+6	280	7329403675107443	CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj	4da1afb258b39649
+2	281	7329403675107443	CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj	9776210e14efa966
+281	343	7329403675712964	Aizo.exe	991b02533db6aaf6
+2	276	7329405172893339	CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj	9776210e14efa966
+276	339	7329405173503857	Aizo.exe	991b02533db6aaf6
