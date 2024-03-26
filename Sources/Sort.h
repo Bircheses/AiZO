@@ -12,7 +12,7 @@ public:
     virtual void printTab();
     virtual void deleteTab();
     int *getTabCopy();
-    void setTabCopy(int *tab);
+    void setTabCopy(const int *tab);
     int getTabSize() const;
     void setTabSize(int tabSize);
 };

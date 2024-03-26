@@ -15,10 +15,11 @@ void read_from_file();
 void generate_table();
 void show_array();
 void run_sort();
+void inSort();
 
 int main() {
     menu();
-    delete[] tab;
+    delete [] tab;
     return 0;
 }
 
@@ -49,7 +50,9 @@ void menu(){
         }
         case 3:{
             system("CLS");
-            show_array();
+            if(tab != NULL){
+                show_array();
+            }else cout << "Tablica jest pusta!" << endl;
             break;
         }
         case 4:{
@@ -110,35 +113,65 @@ void show_array(){
 }
 
 void run_sort(){
-    int n, last;
-    cout << "============WYBIERZ METODE SORTOWANIA===========" << endl;
-    cout << "1-Sortowanie przez wstawianie (Insertion Sort)" << endl;
-    cout << "2-Sortowanie przez kopcowanie (Heap Sort)" << endl;
-    cout << "3-Sortowanie Shella (Shell's Sort)" << endl;
-    cout << "4-Sortowanie szybkie (Quick Sort)" << endl;
-    cout << "0-Wyswietl posortowana tablice" << endl;
-    cin >> n;
-    switch(n){
-        case 1:{
-            InsertionSort insertionSort(tab, tabSize);
-            insertionSort.sort();
-            system("CLS");
-            cout << "Posortowano tablice!" << endl;
-            break;
+    int n;
+    bool out = false;
+    while(!out) {
+        cout << "============WYBIERZ METODE SORTOWANIA===========" << endl;
+        cout << "1-Sortowanie przez wstawianie (Insertion Sort)" << endl;
+        cout << "2-Sortowanie przez kopcowanie (Heap Sort)" << endl;
+        cout << "3-Sortowanie Shella (Shell's Sort)" << endl;
+        cout << "4-Sortowanie szybkie (Quick Sort)" << endl;
+        cout << "0-Wroc do menu glownego" << endl;
+        cin >> n;
+        switch (n) {
+            case 1: {
+                inSort();
+                break;
+            }
+            case 2: {
+                break;
+            }
+            case 3: {
+                break;
+            }
+            case 4: {
+                break;
+            }
+            case 0:{
+                system("CLS");
+                out=true;
+                break;
+            }
+            default:
+                break;
         }
-        case 2:{
-            break;
+    }
+}
+
+void inSort(){
+    int n;
+    bool out = false;
+    InsertionSort insertionSort(tab, tabSize);
+    insertionSort.sort();
+    system("CLS");
+    cout << "Posortowano tablice!" << endl;
+    while(!out) {
+        cout << "1-Wyswietl posortowana tablice" << endl;
+        cout << "0-Wroc do poprzedniego menu" << endl;
+        cin >> n;
+        switch (n) {
+            case 1: {
+                system("CLS");
+                insertionSort.printTab();
+                break;
+            }
+            case 0: {
+                system("CLS");
+                out = true;
+                break;
+            }
+            default:
+                break;
         }
-        case 3:{
-            break;
-        }
-        case 4:{
-            break;
-        }
-        case 0:{
-            break;
-        }
-        default:
-            break;
     }
 }

@@ -5,6 +5,7 @@ void Sort::printTab() {
     for(int i=0; i<tabSize; i++){
         std::cout << tabCopy[i] << " ";
     }
+    std::cout << std::endl;
 }
 
 void Sort::deleteTab() {
@@ -15,7 +16,7 @@ int *Sort::getTabCopy() {
     return tabCopy;
 }
 
-void Sort::setTabCopy(int *tab) {
+void Sort::setTabCopy(const int *tab) {
     tabCopy = new int[tabSize];
     for(int i=0; i < tabSize; i++){
         tabCopy[i]=tab[i];
