@@ -1,58 +1,69 @@
-#include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "QuickSort.h"
 
-using namespace std;
+QuickSort::QuickSort(int *tab, int tabSize, int pivot) {
+    Sort::setTabSize(tabSize);
+    Sort::setTabCopy(tab);
+    this->pivot = pivot;
+}
 
-class QuickSort{
-    public:
-        int* tab_copy;
-        int size;
-        int pivot;
+QuickSort::~QuickSort() {
+    Sort::deleteTab();
+}
 
-    //pivot: 1-skrajny lewy, 2-skrajny prawy, 3-środkowy, 4-losowy
-    QuickSort(int* tab, int pivot, int size){
-        srand(time(NULL));
-        this->size=size;
-        tab_copy = new int[size];
-        for(int i=0; i<size; i++){
-            tab_copy[i]=tab[i];
-        }
-        switch (pivot){
-        case 1:
-            this->pivot=0;
-            break;
-        case 2:
-            this->pivot=tab_copy[size-1];
-            break;
-        case 3:
-            this->pivot=tab_copy[size/2];
-            break;
-        case 4:
-            this->pivot=tab_copy[rand()%size];
-            break;
-        default:
-            break;
-        }
-        sort();
-        display();
-    }
+void QuickSort::sort() {
+    qsort(Sort::getTabCopy(), 0, Sort::getTabSize()-1);
+}
 
-    ~QuickSort(){
-        delete [] tab_copy;
-    }
+void QuickSort::qsort(int *tab, int l, int r) {
+    if (l >= r) return;
+    int m = partition(tab, l, r);
+    qsort(tab, l, m);
+    qsort(tab, m + 1, r);
+}
 
-    void sort(){
-        for(int i=0; i<size; i++){
-            for(int j=size-1; j>-1; j--){
-                
-            }
+int QuickSort::partition(int *tab, int left, int right) const{
+    int p = getPivot(tab, left, right);
+    int l = left, r = right;
+    while (true) {
+        while (tab[l] < p) ++l;
+        while (tab[r] > p) --r;
+        if (l < r) {
+            int pom = tab[l];
+            tab[l] = tab[r];
+            tab[r] = pom;
+            ++l;
+            --r;
+        } else {
+            if (r == right) r--;
+            return r;
         }
     }
+}
 
-    void display(){
-        for(int i=0; i<size; i++){
-            cout << tab_copy[i] << " ";
+int QuickSort::getPivot(int *tab, int left, int right) const {
+    switch (pivot) {
+        case 1: { //lewy
+            return tab[left];
+            break;
+        }
+        case 2: { //środkowy
+            return tab[(right-left)/2+left];
+            break;
+        }
+        case 3: { //prawy
+            return tab[right];
+            break;
+        }
+        case 4: { //losowy
+            srand(time(NULL));
+            return rand()%right+left;
+            break;
+        }
+        default: {
+            return tab[left];
+            break;
         }
     }
-};
+}
