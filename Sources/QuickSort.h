@@ -9,13 +9,13 @@
 class QuickSort : public Sort{
 private:
     int pivot;
+    void qsort(int *tab, int l, int r);
+    int partition(int *tab, int left, int right) const;
+    int getPivot(int *tab, int left, int right) const;
 public:
     QuickSort(int *tab, int tabSize, int pivot);
     ~QuickSort();
     void sort();
-    void qsort(int *tab, int l, int r);
-    int partition(int *tab, int left, int right) const;
-    int getPivot(int *tab, int left, int right) const;
 };
 
 

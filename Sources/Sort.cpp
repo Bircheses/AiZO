@@ -17,6 +17,7 @@ int *Sort::getTabCopy() {
 }
 
 void Sort::setTabCopy(const int *tab) {
+    delete [] tabCopy;
     tabCopy = new int[tabSize];
     for(int i=0; i < tabSize; i++){
         tabCopy[i] = tab[i];

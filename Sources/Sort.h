@@ -6,7 +6,7 @@
  */
 class Sort {
 private:
-    int* tabCopy;
+    int* tabCopy = nullptr;
     int tabSize;
 public:
     virtual void printTab();

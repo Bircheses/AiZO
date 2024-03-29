@@ -6,6 +6,7 @@
 #include "Counter.h"
 #include "Sources/InsertionSort.h"
 #include "Sources/QuickSort.h"
+#include "Sources/ShellSort.h"
 
 using namespace std;
 
@@ -13,18 +14,13 @@ int *tab;
 int tabSize;
 
 void menu();
-
 void read_from_file();
-
 void generate_table();
-
 void show_array();
-
 void run_sort();
-
 void insertion_sort();
-
 void quick_sort(int pivot);
+void shell_sort(int choice);
 
 int main() {
     menu();
@@ -140,6 +136,12 @@ void run_sort() {
                 break;
             }
             case 3: {
+                int choice;
+                system("CLS");
+                cout << "====WYBIERZ ZLOZONOSC ALGORYTMU=====" << endl;
+                cout << "1-O(n^2) Shell'a" << endl;
+                cout << "2-O(n^4/3) Sedgewick'a" << endl;
+                cin >> choice;
                 break;
             }
             case 4: {
@@ -214,6 +216,37 @@ void quick_sort(int pivot) {
             case 1: {
                 system("CLS");
                 quickSort.printTab();
+                break;
+            }
+            case 0: {
+                system("CLS");
+                out = true;
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
+void shell_sort(int space){
+    int n;
+    bool out = false;
+    ShellSort shellSort(tab, tabSize, space);
+    Counter counter;
+    counter.start();
+    shellSort.sort();
+    counter.stop();
+    system("CLS");
+    cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
+    while (!out) {
+        cout << "1-Wyswietl posortowana tablice" << endl;
+        cout << "0-Wroc do poprzedniego menu" << endl;
+        cin >> n;
+        switch (n) {
+            case 1: {
+                system("CLS");
+                shellSort.printTab();
                 break;
             }
             case 0: {
