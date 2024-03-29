@@ -3,6 +3,7 @@
 #include <ctime>
 #include <fstream>
 
+#include "Counter.h"
 #include "Sources/InsertionSort.h"
 
 using namespace std;
@@ -152,9 +153,12 @@ void inSort(){
     int n;
     bool out = false;
     InsertionSort insertionSort(tab, tabSize);
+    Counter counter;
+    counter.start();
     insertionSort.sort();
+    counter.stop();
     system("CLS");
-    cout << "Posortowano tablice!" << endl;
+    cout << "Posortowano tablice w czasie" << counter.getElapsedTime() << "ms" << endl;
     while(!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
         cout << "0-Wroc do poprzedniego menu" << endl;
