@@ -7,9 +7,9 @@ class ShellSort : public Sort {
 private:
     int pow(int a, int b);
 public:
-    ShellSort(int *tab, int tabSize, int space);
+    ShellSort();
     ~ShellSort();
-    void sort();
+    void sort(int *tab, int tabSize, int space);
 };
 
 #endif

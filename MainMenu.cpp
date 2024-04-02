@@ -232,10 +232,10 @@ void quick_sort(int pivot) {
 void shell_sort(int space){
     int n;
     bool out = false;
-    ShellSort shellSort(tab, tabSize, space);
+    ShellSort shellSort;
     Counter counter;
     counter.start();
-    shellSort.sort();
+    shellSort.sort(tab, tabSize, space);
     counter.stop();
     system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;

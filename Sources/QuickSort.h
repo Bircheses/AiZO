@@ -10,7 +10,7 @@ class QuickSort : public Sort{
 private:
     int pivot;
     void qsort(int *tab, int l, int r);
-    int partition(int *tab, int left, int right) const;
+    int partition(int *tab, int left, int right);
     int getPivot(int *tab, int left, int right) const;
 public:
     QuickSort(int *tab, int tabSize, int pivot);

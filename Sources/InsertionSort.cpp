@@ -14,9 +14,7 @@ void InsertionSort::sort() {
     for(int i=1; i<Sort::getTabSize(); i++){
         for(int j=i; j>0; j--){
             if(temp[j] < temp[j-1]){
-                int num = temp[j];
-                temp[j] = temp[j-1];
-                temp[j-1] = num;
+                swap(&temp[j-1], &temp[j]);
             }
         }
     }

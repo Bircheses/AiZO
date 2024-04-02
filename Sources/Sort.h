@@ -15,6 +15,7 @@ public:
     void setTabCopy(const int *tab);
     int getTabSize() const;
     void setTabSize(int tabSize);
+    void swap(int *a, int *b);
 };
 
 #endif

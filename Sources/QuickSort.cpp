@@ -23,16 +23,14 @@ void QuickSort::qsort(int *tab, int l, int r) {
     qsort(tab, m + 1, r);
 }
 
-int QuickSort::partition(int *tab, int left, int right) const{
+int QuickSort::partition(int *tab, int left, int right) {
     int p = getPivot(tab, left, right);
     int l = left, r = right;
     while (true) {
         while (tab[l] < p) ++l;
         while (tab[r] > p) --r;
         if (l < r) {
-            int pom = tab[l];
-            tab[l] = tab[r];
-            tab[r] = pom;
+            Sort::swap(&tab[r], &tab[l]);
             ++l;
             --r;
         } else {
@@ -46,24 +44,19 @@ int QuickSort::getPivot(int *tab, int left, int right) const {
     switch (pivot) {
         case 1: { //lewy
             return tab[left];
-            break;
         }
         case 2: { //środkowy
             return tab[(right-left)/2+left];
-            break;
         }
         case 3: { //prawy
             return tab[right];
-            break;
         }
         case 4: { //losowy
             srand(time(NULL));
-            return rand()%right+left;
-            break;
+            return tab[rand()%(right-left)+left];
         }
         default: {
             return tab[left];
-            break;
         }
     }
 }

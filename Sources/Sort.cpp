@@ -31,3 +31,9 @@ int Sort::getTabSize() const {
 void Sort::setTabSize(int tabSize) {
     Sort::tabSize = tabSize;
 }
+
+void Sort::swap(int *a, int *b) {
+    int pom = *b;
+    *b = *a;
+    *a = pom;
+}
