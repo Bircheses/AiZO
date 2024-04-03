@@ -5,9 +5,9 @@
 
 class InsertionSort : public Sort{
 public:
-    InsertionSort(int *tab, int tabSize);
+    InsertionSort();
     ~InsertionSort();
-    void sort();
+    void sort(int *tab, int tabSize);
 };
 
 #endif

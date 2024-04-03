@@ -4,12 +4,12 @@
 #include "Sort.h"
 
 class ShellSort : public Sort {
-private:
-    int pow(int a, int b);
 public:
     ShellSort();
     ~ShellSort();
-    void sort(int *tab, int tabSize, int space);
+    void sort(int *tab, int tabSize, int algorithm_choice);
+    void shell(int *tab, int tabSize);
+    void sedgewick(int *tab, int tabSize);
 };
 
 #endif

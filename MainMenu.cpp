@@ -102,11 +102,18 @@ void read_from_file() {
 }
 
 void generate_table() {
-    if (tab != NULL) delete[] tab;
+    if (tab != nullptr) delete[] tab;
     tab = new int[tabSize];
     for (int i = 0; i < tabSize; i++) {
         tab[i] = rand() % 99 + 1;
     }
+    /*tab[0]=1;
+    tab[1]=2;
+    tab[2]=3;
+    tab[3]=4;
+    tab[4]=5;
+    tab[5]=6;
+    tab[6]=7;*/
 }
 
 void show_array() {
@@ -142,6 +149,7 @@ void run_sort() {
                 cout << "1-O(n^2) Shell'a" << endl;
                 cout << "2-O(n^4/3) Sedgewick'a" << endl;
                 cin >> choice;
+                shell_sort(choice);
                 break;
             }
             case 4: {
@@ -162,6 +170,7 @@ void run_sort() {
                 break;
             }
             default:
+                out = true;
                 break;
         }
     }
@@ -170,10 +179,10 @@ void run_sort() {
 void insertion_sort() {
     int n;
     bool out = false;
-    InsertionSort insertionSort(tab, tabSize);
+    InsertionSort insertionSort;
     Counter counter;
     counter.start();
-    insertionSort.sort();
+    insertionSort.sort(tab, tabSize);
     counter.stop();
     system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
@@ -193,6 +202,7 @@ void insertion_sort() {
                 break;
             }
             default:
+                out = true;
                 break;
         }
     }
@@ -201,10 +211,10 @@ void insertion_sort() {
 void quick_sort(int pivot) {
     int n;
     bool out = false;
-    QuickSort quickSort(tab, tabSize, pivot);
+    QuickSort quickSort;
     Counter counter;
     counter.start();
-    quickSort.sort();
+    quickSort.sort(tab, tabSize, pivot);
     counter.stop();
     system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
@@ -224,18 +234,19 @@ void quick_sort(int pivot) {
                 break;
             }
             default:
+                out = true;
                 break;
         }
     }
 }
 
-void shell_sort(int space){
+void shell_sort(int choice){
     int n;
     bool out = false;
     ShellSort shellSort;
     Counter counter;
     counter.start();
-    shellSort.sort(tab, tabSize, space);
+    shellSort.sort(tab, tabSize, choice);
     counter.stop();
     system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;

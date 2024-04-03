@@ -2,17 +2,16 @@
 #include <ctime>
 #include "QuickSort.h"
 
-QuickSort::QuickSort(int *tab, int tabSize, int pivot) {
-    Sort::setTabSize(tabSize);
-    Sort::setTabCopy(tab);
-    this->pivot = pivot;
-}
+QuickSort::QuickSort() = default;
 
 QuickSort::~QuickSort() {
     Sort::deleteTab();
 }
 
-void QuickSort::sort() {
+void QuickSort::sort(int *tab, int tabSize, int pivot) {
+    Sort::setTabSize(tabSize);
+    Sort::setTabCopy(tab);
+    this->pivot = pivot;
     qsort(Sort::getTabCopy(), 0, Sort::getTabSize()-1);
 }
 
