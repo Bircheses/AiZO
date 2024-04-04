@@ -4,18 +4,19 @@
 /**
  * Abstract Sort class for saving, deleting and showing table
  */
+template <typename T>
 class Sort {
 private:
-    int* tabCopy = nullptr;
+    T *tabCopy = nullptr;
     int tabSize = 0;
 public:
     virtual void printTab();
     virtual void deleteTab();
-    template<typename T> T *getTabCopy();
-    template<typename T> void setTabCopy(const T *tab);
+    T *getTabCopy();
+    virtual void setTabCopy(const T *tab);
     [[nodiscard]] int getTabSize() const;
     virtual void setTabSize(int size);
-    template<typename T> void swap(T *a, T *b);
+    void swap(T *a, T *b);
 };
 
 #endif
