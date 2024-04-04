@@ -3,21 +3,25 @@
 #include <iostream>
 #include "QuickSort.h"
 
-QuickSort::QuickSort(int *tab, int tabSize, int pivot){
-    Sort::setTabSize(tabSize);
-    Sort::setTabCopy(tab);
+template<typename T>
+QuickSort<T>::QuickSort(T *tab, int tabSize, int pivot){
+    Sort<T>::setTabSize(tabSize);
+    Sort<T>::setTabCopy(tab);
     this->pivot = pivot;
 }
 
-QuickSort::~QuickSort() {
-    Sort::deleteTab();
+template<typename T>
+QuickSort<T>::~QuickSort() {
+    Sort<T>::deleteTab();
 }
 
-void QuickSort::sort() {
-    quicksort(Sort::getTabCopy(), 0, Sort::getTabSize()-1);
+template<typename T>
+void QuickSort<T>::sort() {
+    quicksort(Sort<T>::getTabCopy(), 0, Sort<T>::getTabSize()-1);
 }
 
-void QuickSort::quicksort(int *tab, int l, int r) {
+template<typename T>
+void QuickSort<T>::quicksort(T *tab, int l, int r) {
     if(l<r) {
         int m = partition(tab, l, r);
         quicksort(tab, l, m - 1);
@@ -25,7 +29,8 @@ void QuickSort::quicksort(int *tab, int l, int r) {
     }
 }
 
-int QuickSort::partition(int *tab, int left, int right) {
+template<typename T>
+int QuickSort<T>::partition(T *tab, int left, int right) {
     int p = getPivot(tab, left, right);
     int i = left-1;
     for(int j=left; j<=right; j++){
@@ -51,7 +56,8 @@ int QuickSort::partition(int *tab, int left, int right) {
     }*/
 }
 
-int QuickSort::getPivot(int *tab, int left, int right) const {
+template<typename T>
+int QuickSort<T>::getPivot(T *tab, int left, int right) const {
     if(pivot==1) return tab[left];
     else if(pivot==2) return tab[(right-left)/2+left];
     else if(pivot==3) return tab[right];

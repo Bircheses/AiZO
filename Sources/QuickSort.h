@@ -6,14 +6,15 @@
 /**
  * pivot: 1-left, 2-middle, 3-right, 4-random
  */
-class QuickSort : public Sort{
+template<typename T>
+class QuickSort : public Sort<T>{
 private:
     int pivot;
-    void quicksort(int *tab, int l, int r);
-    int partition(int *tab, int left, int right);
-    int getPivot(int *tab, int left, int right) const;
+    void quicksort(T *tab, int l, int r);
+    int partition(T *tab, int left, int right);
+    int getPivot(T *tab, int left, int right) const;
 public:
-    QuickSort(int *tab, int tabSize, int pivot);
+    QuickSort(T *tab, int tabSize, int pivot);
     ~QuickSort();
     void sort();
 };
