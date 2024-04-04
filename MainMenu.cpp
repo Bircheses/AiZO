@@ -7,6 +7,7 @@
 #include "Sources/InsertionSort.h"
 #include "Sources/QuickSort.h"
 #include "Sources/ShellSort.h"
+#include "Sources/HeapSort.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ void generate_table();
 void show_array();
 void run_sort();
 void insertion_sort();
+void heap_sort();
 void quick_sort(int pivot);
 void shell_sort(int choice);
 
@@ -105,15 +107,8 @@ void generate_table() {
     if (tab != nullptr) delete[] tab;
     tab = new int[tabSize];
     for (int i = 0; i < tabSize; i++) {
-        tab[i] = rand() % 99 + 1;
+        tab[i] = rand() % 9999 + 1;
     }
-    /*tab[0]=1;
-    tab[1]=2;
-    tab[2]=3;
-    tab[3]=4;
-    tab[4]=5;
-    tab[5]=6;
-    tab[6]=7;*/
 }
 
 void show_array() {
@@ -140,6 +135,7 @@ void run_sort() {
                 break;
             }
             case 2: {
+                heap_sort();
                 break;
             }
             case 3: {
@@ -169,9 +165,10 @@ void run_sort() {
                 out = true;
                 break;
             }
-            default:
+            default: {
                 out = true;
                 break;
+            }
         }
     }
 }
@@ -179,10 +176,10 @@ void run_sort() {
 void insertion_sort() {
     int n;
     bool out = false;
-    InsertionSort insertionSort;
+    InsertionSort insertionSort(tab, tabSize);
     Counter counter;
     counter.start();
-    insertionSort.sort(tab, tabSize);
+    insertionSort.sort();
     counter.stop();
     system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
@@ -201,9 +198,43 @@ void insertion_sort() {
                 out = true;
                 break;
             }
-            default:
+            default: {
                 out = true;
                 break;
+            }
+        }
+    }
+}
+
+void heap_sort(){
+    int n;
+    bool out = false;
+    HeapSort heapSort(tab, tabSize);
+    Counter counter;
+    counter.start();
+    heapSort.sort();
+    counter.stop();
+    system("CLS");
+    cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
+    while (!out) {
+        cout << "1-Wyswietl posortowana tablice" << endl;
+        cout << "0-Wroc do poprzedniego menu" << endl;
+        cin >> n;
+        switch (n) {
+            case 1: {
+                system("CLS");
+                heapSort.printTab();
+                break;
+            }
+            case 0: {
+                system("CLS");
+                out = true;
+                break;
+            }
+            default: {
+                out = true;
+                break;
+            }
         }
     }
 }
@@ -211,12 +242,12 @@ void insertion_sort() {
 void quick_sort(int pivot) {
     int n;
     bool out = false;
-    QuickSort quickSort;
+    system("CLS");
+    QuickSort quickSort(tab, tabSize, pivot);
     Counter counter;
     counter.start();
-    quickSort.sort(tab, tabSize, pivot);
+    quickSort.sort();
     counter.stop();
-    system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
@@ -233,9 +264,10 @@ void quick_sort(int pivot) {
                 out = true;
                 break;
             }
-            default:
+            default: {
                 out = true;
                 break;
+            }
         }
     }
 }
@@ -243,13 +275,22 @@ void quick_sort(int pivot) {
 void shell_sort(int choice){
     int n;
     bool out = false;
-    ShellSort shellSort;
-    Counter counter;
-    counter.start();
-    shellSort.sort(tab, tabSize, choice);
-    counter.stop();
-    system("CLS");
-    cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
+    ShellSort shellSort(tab, tabSize);
+    if(choice==1){
+        Counter counter;
+        counter.start();
+        shellSort.shellalgsort();
+        counter.stop();
+        system("CLS");
+        cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
+    }else if(choice==2){
+        Counter counter;
+        counter.start();
+        shellSort.sedgewickalgsort();
+        counter.stop();
+        system("CLS");
+        cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
+    }
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
         cout << "0-Wroc do poprzedniego menu" << endl;
@@ -265,8 +306,10 @@ void shell_sort(int choice){
                 out = true;
                 break;
             }
-            default:
+            default: {
+                out = true;
                 break;
+            }
         }
     }
 }

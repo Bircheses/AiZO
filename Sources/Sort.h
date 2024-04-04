@@ -12,9 +12,9 @@ public:
     virtual void printTab();
     virtual void deleteTab();
     int *getTabCopy();
-    void setTabCopy(const int *tab);
+    virtual void setTabCopy(const int *tab);
     int getTabSize() const;
-    void setTabSize(int tabSize);
+    virtual void setTabSize(int tabSize);
     void swap(int *a, int *b);
 };
 

@@ -14,4 +14,6 @@ add_executable(Aizo
         Sources/QuickSort.cpp
         Sources/QuickSort.h
         Sources/ShellSort.cpp
-        Sources/ShellSort.h)
+        Sources/ShellSort.h
+        Sources/HeapSort.cpp
+        Sources/HeapSort.h)
