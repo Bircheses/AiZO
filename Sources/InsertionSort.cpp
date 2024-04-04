@@ -1,26 +1,24 @@
 #include "InsertionSort.h"
 
-InsertionSort::InsertionSort(int *tab, int tabSize){
-    Sort::setTabSize(tabSize);
-    Sort::setTabCopy(tab);
+template<typename T>
+InsertionSort<T>::InsertionSort(T *tab, int tabSize){
+    Sort<T>::setTabSize(tabSize);
+    Sort<T>::setTabCopy(tab);
 }
 
-InsertionSort::~InsertionSort() {
-    Sort::deleteTab();
+template<typename T>
+InsertionSort<T>::~InsertionSort() {
+    Sort<T>::deleteTab();
 }
 
-void InsertionSort::sort(){
-    int *temp = Sort::getTabCopy();
-    for(int i=1; i<Sort::getTabSize(); i++){
+template<typename T>
+void InsertionSort<T>::sort(){
+    int *temp = Sort<T>::getTabCopy();
+    for(int i=1; i<Sort<T>::getTabSize(); i++){
         int j=i;
         while(j>0 && temp[j] < temp[j-1]){
-            swap(&temp[j-1], &temp[j]);
+            Sort<T>::swap(&temp[j-1], &temp[j]);
             j--;
         }
-        /*for(int j=i; j>0; j--){
-            if(temp[j] < temp[j-1]){
-                swap(&temp[j-1], &temp[j]);
-            }
-        }*/
     }
 }

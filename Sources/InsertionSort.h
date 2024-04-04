@@ -3,9 +3,10 @@
 
 #include "Sort.h"
 
-class InsertionSort : public Sort{
+template<typename T>
+class InsertionSort : public Sort<T>{
 public:
-    InsertionSort(int *tab, int tabSize);
+    InsertionSort(T *tab, int tabSize);
     ~InsertionSort();
     void sort();
 };
