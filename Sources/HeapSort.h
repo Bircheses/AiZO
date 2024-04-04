@@ -3,14 +3,15 @@
 
 #include "Sort.h"
 
-class HeapSort : public Sort{
+template<typename T>
+class HeapSort : public Sort<T>{
 public:
-    HeapSort(int *tab, int tabSize);
+    HeapSort(T *tab, int tabSize);
     ~HeapSort();
     void sort();
 private:
-    void createHeap(int *tabCopy, int tabSize);
-    void fixHeapDown(int *tabCopy, int i, int tabSize);
+    void createHeap(T *tabCopy, int tabSize);
+    void fixHeapDown(T *tabCopy, int i, int tabSize);
 };
 
 #endif

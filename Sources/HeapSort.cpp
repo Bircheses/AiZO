@@ -1,40 +1,44 @@
-#include <iostream>
 #include "HeapSort.h"
 
-HeapSort::HeapSort(int *tab, int tabSize){
-    Sort::setTabSize(tabSize);
-    Sort::setTabCopy(tab);
-    HeapSort::createHeap(Sort::getTabCopy(), Sort::getTabSize());
+template<typename T>
+HeapSort<T>::HeapSort(T *tab, int tabSize){
+    Sort<T>::setTabSize(tabSize);
+    Sort<T>::setTabCopy(tab);
+    HeapSort::createHeap(Sort<T>::getTabCopy(), Sort<T>::getTabSize());
 }
 
-HeapSort::~HeapSort() {
-    Sort::deleteTab();
+template<typename T>
+HeapSort<T>::~HeapSort() {
+    Sort<T>::deleteTab();
 }
 
-void HeapSort::sort() {
-    int *temp = Sort::getTabCopy();
-    for(int i=1;i<=getTabSize();i++) {
-        swap(&temp[0], &temp[getTabSize() - i]);
-        fixHeapDown(temp, 0, getTabSize() - i);
+template<typename T>
+void HeapSort<T>::sort() {
+    T *temp = Sort<T>::getTabCopy();
+    for(int i=1;i<=Sort<T>::getTabSize();i++) {
+        swap(&temp[0], &temp[Sort<T>::getTabSize() - i]);
+        fixHeapDown(temp, 0, Sort<T>::getTabSize() - i);
     }
 }
 
-void HeapSort::createHeap(int *tabCopy, int tabSize) {
+template<typename T>
+void HeapSort<T>::createHeap(T *tabCopy, int tabSize) {
     for(int i=(tabSize-2)/2; i>=0; --i){
-        HeapSort::fixHeapDown(tabCopy, i, tabSize);
+        fixHeapDown(tabCopy, i, tabSize);
     }
 }
 
-void HeapSort::fixHeapDown(int *tabCopy, int i, int tabSize) {
+template<typename T>
+void HeapSort<T>::fixHeapDown(T *tabCopy, int i, int tabSize) {
     if (tabCopy[2*i+1]>=tabCopy[2*i+2]) {
         if (tabCopy[2*i+1]>tabCopy[i]) {
-            Sort::swap(&tabCopy[i], &tabCopy[2*i+1]);
-            if(2*i+1<=(tabSize-2)/2) HeapSort::fixHeapDown(tabCopy, 2*i+1, tabSize);
+            Sort<T>::swap(&tabCopy[i], &tabCopy[2*i+1]);
+            if(2*i+1<=(tabSize-2)/2) fixHeapDown(tabCopy, 2*i+1, tabSize);
         }
     } else {
         if (tabCopy[2*i+2] > tabCopy[i] && 2*i+2 < tabSize) {
-            Sort::swap(&tabCopy[i], &tabCopy[2*i+2]);
-            if(2*i+2<=(tabSize-2)/2) HeapSort::fixHeapDown(tabCopy, 2*i+2, tabSize);
+            Sort<T>::swap(&tabCopy[i], &tabCopy[2*i+2]);
+            if(2*i+2<=(tabSize-2)/2) fixHeapDown(tabCopy, 2*i+2, tabSize);
         }
     }
 }
