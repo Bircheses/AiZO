@@ -41,3 +41,6 @@ void ShellSort<T>::sedgewickalgsort() {
         }
     }
 }
+
+template class ShellSort<int>;
+template class ShellSort<float>;

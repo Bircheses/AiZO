@@ -13,7 +13,7 @@ InsertionSort<T>::~InsertionSort() {
 
 template<typename T>
 void InsertionSort<T>::sort(){
-    int *temp = Sort<T>::getTabCopy();
+    T *temp = Sort<T>::getTabCopy();
     for(int i=1; i<Sort<T>::getTabSize(); i++){
         int j=i;
         while(j>0 && temp[j] < temp[j-1]){
@@ -22,3 +22,6 @@ void InsertionSort<T>::sort(){
         }
     }
 }
+
+template class InsertionSort<int>;
+template class InsertionSort<float>;

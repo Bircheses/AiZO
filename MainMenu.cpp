@@ -176,7 +176,7 @@ void run_sort() {
 void insertion_sort() {
     int n;
     bool out = false;
-    InsertionSort insertionSort(tab, tabSize);
+    InsertionSort<int> insertionSort(tab, tabSize);
     Counter counter;
     counter.start();
     insertionSort.sort();
@@ -209,7 +209,7 @@ void insertion_sort() {
 void heap_sort(){
     int n;
     bool out = false;
-    HeapSort heapSort(tab, tabSize);
+    HeapSort<int> heapSort(tab, tabSize);
     Counter counter;
     counter.start();
     heapSort.sort();
@@ -243,7 +243,7 @@ void quick_sort(int pivot) {
     int n;
     bool out = false;
     system("CLS");
-    QuickSort quickSort(tab, tabSize, pivot);
+    QuickSort<int> quickSort(tab, tabSize, pivot);
     Counter counter;
     counter.start();
     quickSort.sort();
@@ -275,7 +275,7 @@ void quick_sort(int pivot) {
 void shell_sort(int choice){
     int n;
     bool out = false;
-    ShellSort shellSort(tab, tabSize);
+    ShellSort<int> shellSort(tab, tabSize);
     if(choice==1){
         Counter counter;
         counter.start();

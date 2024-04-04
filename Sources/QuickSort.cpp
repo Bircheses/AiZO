@@ -36,10 +36,10 @@ int QuickSort<T>::partition(T *tab, int left, int right) {
     for(int j=left; j<=right; j++){
         if(tab[j]<p){
             i++;
-            swap(&tab[i],&tab[j]);
+            Sort<T>::swap(&tab[i],&tab[j]);
         }
     }
-    swap(&tab[i+1],&tab[right]);
+    Sort<T>::swap(&tab[i+1],&tab[right]);
     return i+1;
     /*int l = left, r = right;
     while (true) {
@@ -66,3 +66,6 @@ int QuickSort<T>::getPivot(T *tab, int left, int right) const {
         return tab[rand()%(right-left)+left];
     }
 }
+
+template class QuickSort<int>;
+template class QuickSort<float>;

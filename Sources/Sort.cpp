@@ -44,3 +44,6 @@ void Sort<T>::swap(T *a, T *b) {
     *b = *a;
     *a = pom;
 }
+
+template class Sort<int>;
+template class Sort<float>;
