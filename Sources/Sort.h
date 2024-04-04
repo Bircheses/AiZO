@@ -7,15 +7,15 @@
 class Sort {
 private:
     int* tabCopy = nullptr;
-    int tabSize;
+    int tabSize = 0;
 public:
     virtual void printTab();
     virtual void deleteTab();
-    int *getTabCopy();
-    virtual void setTabCopy(const int *tab);
-    int getTabSize() const;
-    virtual void setTabSize(int tabSize);
-    void swap(int *a, int *b);
+    template<typename T> T *getTabCopy();
+    template<typename T> void setTabCopy(const T *tab);
+    [[nodiscard]] int getTabSize() const;
+    virtual void setTabSize(int size);
+    template<typename T> void swap(T *a, T *b);
 };
 
 #endif

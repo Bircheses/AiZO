@@ -12,13 +12,15 @@ void Sort::deleteTab() {
     delete [] tabCopy;
 }
 
-int *Sort::getTabCopy() {
+template <typename T>
+T *Sort::getTabCopy() {
     return tabCopy;
 }
 
-void Sort::setTabCopy(const int *tab) {
+template <typename T>
+void Sort::setTabCopy(const T *tab) {
     delete [] tabCopy;
-    tabCopy = new int[tabSize];
+    tabCopy = new T[tabSize];
     for(int i=0; i < tabSize; i++){
         tabCopy[i] = tab[i];
     }
@@ -28,12 +30,13 @@ int Sort::getTabSize() const {
     return tabSize;
 }
 
-void Sort::setTabSize(int tabSize) {
-    Sort::tabSize = tabSize;
+void Sort::setTabSize(int size) {
+    Sort::tabSize = size;
 }
 
-void Sort::swap(int *a, int *b) {
-    int pom = *b;
+template <typename T>
+void Sort::swap(T *a, T *b) {
+    T pom = *b;
     *b = *a;
     *a = pom;
 }
