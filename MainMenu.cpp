@@ -11,25 +11,37 @@
 
 using namespace std;
 
-int *tab;
+template<typename T> T *tab;
 int tabSize;
 
-void menu();
-void read_from_file();
-void generate_table();
-void show_array();
-void run_sort();
-void insertion_sort();
-void heap_sort();
-void quick_sort(int pivot);
-void shell_sort(int choice);
+template<typename T> void menu();
+template<typename T> void read_from_file();
+template<typename T> void generate_table();
+template<typename T> void show_array();
+template<typename T> void run_sort();
+template<typename T> void insertion_sort();
+template<typename T> void heap_sort();
+template<typename T> void quick_sort(int pivot);
+template<typename T> void shell_sort(int choice);
 
 int main() {
-    menu();
-    delete[] tab;
+    char c;
+    cout << "Pracujemy na int, czy float?" << endl;
+    cout << "i-int" << endl;
+    cout << "f-float" << endl;
+    cin >> c;
+    system("CLS");
+    if(c=='i') {
+        menu<int>();
+        delete[] tab<int>;
+    }else if(c=='f'){
+        menu<float>();
+        delete[] tab<float>;
+    }
     return 0;
 }
 
+template<typename T>
 void menu() {
     srand(time(NULL));
     bool out = false;
@@ -44,7 +56,7 @@ void menu() {
         cin >> n;
         switch (n) {
             case 1: {
-                read_from_file();
+                read_from_file<T>();
                 break;
             }
             case 2: {
@@ -52,20 +64,20 @@ void menu() {
                 cout << "Podaj wielkosc tablicy:" << endl;
                 cin >> tabSize;
                 system("CLS");
-                generate_table();
+                generate_table<T>();
                 break;
             }
             case 3: {
                 system("CLS");
-                if (tab != NULL) {
-                    show_array();
+                if (tab<T> != NULL) {
+                    show_array<T>();
                 } else cout << "Tablica jest pusta!" << endl;
                 break;
             }
             case 4: {
                 system("CLS");
-                if (tab != NULL) {
-                    run_sort();
+                if (tab<T> != NULL) {
+                    run_sort<T>();
                 } else cout << "Tablica jest pusta!" << endl;
                 break;
             }
@@ -82,6 +94,7 @@ void menu() {
     }
 }
 
+template<typename T>
 void read_from_file() {
     string url;
     int pom, i;
@@ -90,34 +103,43 @@ void read_from_file() {
     cin >> url;
     system("CLS");
     ifstream file(url + ".txt");
-    if (tab != NULL) delete[] tab;
+    if (tab<T> != NULL) delete[] tab<T>;
     if (file.is_open()) {
         i = 0;
         while (file >> pom) {
             if (i == 0) {
                 tabSize = pom;
-                tab = new int[tabSize];
-            } else tab[i - 1] = pom;
+                tab<T> = new T[tabSize];
+            } else tab<T>[i - 1] = pom;
             i++;
         }
     } else cout << "Niepoprawna nazwa pliku!" << endl;
 }
 
+template<typename T>
 void generate_table() {
-    if (tab != nullptr) delete[] tab;
-    tab = new int[tabSize];
-    for (int i = 0; i < tabSize; i++) {
-        tab[i] = rand() % 9999 + 1;
+    if (tab<T> != nullptr) delete[] tab<T>;
+    tab<T> = new T[tabSize];
+    if(std::numeric_limits<T>::is_integer) {
+        for (int i = 0; i < tabSize; i++) {
+            tab<T>[i] = rand() % 9999 + 1;
+        }
+    }else{
+        for (int i = 0; i < tabSize; i++) {
+            tab<T>[i] = (rand() % 99 + 1)+((float)(rand())/(float)(RAND_MAX));
+        }
     }
 }
 
+template<typename T>
 void show_array() {
     for (int i = 0; i < tabSize; i++) {
-        cout << tab[i] << " ";
+        cout << tab<T>[i] << " ";
     }
     cout << endl;
 }
 
+template<typename T>
 void run_sort() {
     int n;
     bool out = false;
@@ -131,11 +153,11 @@ void run_sort() {
         cin >> n;
         switch (n) {
             case 1: {
-                insertion_sort();
+                insertion_sort<T>();
                 break;
             }
             case 2: {
-                heap_sort();
+                heap_sort<T>();
                 break;
             }
             case 3: {
@@ -145,7 +167,7 @@ void run_sort() {
                 cout << "1-O(n^2) Shell'a" << endl;
                 cout << "2-O(n^4/3) Sedgewick'a" << endl;
                 cin >> choice;
-                shell_sort(choice);
+                shell_sort<T>(choice);
                 break;
             }
             case 4: {
@@ -157,7 +179,7 @@ void run_sort() {
                 cout << "3-prawy" << endl;
                 cout << "4-losowy" << endl;
                 cin >> pivot;
-                quick_sort(pivot);
+                quick_sort<T>(pivot);
                 break;
             }
             case 0: {
@@ -173,10 +195,11 @@ void run_sort() {
     }
 }
 
+template<typename T>
 void insertion_sort() {
     int n;
     bool out = false;
-    InsertionSort<int> insertionSort(tab, tabSize);
+    InsertionSort<T> insertionSort(tab<T>, tabSize);
     Counter counter;
     counter.start();
     insertionSort.sort();
@@ -206,10 +229,11 @@ void insertion_sort() {
     }
 }
 
+template<typename T>
 void heap_sort(){
     int n;
     bool out = false;
-    HeapSort<int> heapSort(tab, tabSize);
+    HeapSort<T> heapSort(tab<T>, tabSize);
     Counter counter;
     counter.start();
     heapSort.sort();
@@ -239,11 +263,12 @@ void heap_sort(){
     }
 }
 
+template<typename T>
 void quick_sort(int pivot) {
     int n;
     bool out = false;
     system("CLS");
-    QuickSort<int> quickSort(tab, tabSize, pivot);
+    QuickSort<T> quickSort(tab<T>, tabSize, pivot);
     Counter counter;
     counter.start();
     quickSort.sort();
@@ -272,10 +297,11 @@ void quick_sort(int pivot) {
     }
 }
 
+template<typename T>
 void shell_sort(int choice){
     int n;
     bool out = false;
-    ShellSort<int> shellSort(tab, tabSize);
+    ShellSort<T> shellSort(tab<T>, tabSize);
     if(choice==1){
         Counter counter;
         counter.start();

@@ -86,3 +86,14 @@
 52	119	7339500009396535	Aizo.exe	6bb586befcb1ff3a
 2	1265	7339500315615871	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
 1265	1341	7339500316351501	Aizo.exe	6bb586befcb1ff3a
+5	59	7339541935788647	CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj	9776210e14efa966
+10	70	7339541935903744	CMakeFiles/Aizo.dir/Sources/HeapSort.cpp.obj	3a903494131263d3
+12	74	7339541935948781	CMakeFiles/Aizo.dir/Sources/ShellSort.cpp.obj	ae91a833eef88583
+15	319	7339541938395885	CMakeFiles/Aizo.dir/Sources/QuickSort.cpp.obj	7018d8aef0cd400b
+8	326	7339541938465949	CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj	4da1afb258b39649
+2	1309	7339541948294391	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+1309	1388	7339541949075055	Aizo.exe	6bb586befcb1ff3a
+2	1210	7339542469009898	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+1210	1286	7339542469760545	Aizo.exe	6bb586befcb1ff3a
+2	1211	7339542633411479	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+1211	1282	7339542634112085	Aizo.exe	6bb586befcb1ff3a
