@@ -23,6 +23,7 @@ template<typename T> void insertion_sort();
 template<typename T> void heap_sort();
 template<typename T> void quick_sort(int pivot);
 template<typename T> void shell_sort(int choice);
+template<typename T> void symulacja();
 
 int main() {
     char c;
@@ -122,7 +123,7 @@ void generate_table() {
     tab<T> = new T[tabSize];
     if(std::numeric_limits<T>::is_integer) {
         for (int i = 0; i < tabSize; i++) {
-            tab<T>[i] = rand() % 9999 + 1;
+            tab<T>[i] = rand() % 999 + 1;
         }
     }else{
         for (int i = 0; i < tabSize; i++) {

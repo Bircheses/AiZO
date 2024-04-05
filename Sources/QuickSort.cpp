@@ -21,7 +21,7 @@ void QuickSort<T>::sort() {
 }
 
 template<typename T>
-int QuickSort<T>::getPivotIndex(T *tab, int left, int right) const {
+int QuickSort<T>::getPivotIndex(int left, int right) const {
     if(pivot==1) return left;
     else if(pivot==2) return (right-left)/2+left;
     else if(pivot==3) return right;
@@ -42,8 +42,7 @@ void QuickSort<T>::quicksort(T *tab, int left, int right) {
 
 template<typename T>
 int QuickSort<T>::partition(T *tab, int left, int right) {
-    int pivotIndex = getPivotIndex(tab, left, right);
-    //Zmiana wartości
+    int pivotIndex = getPivotIndex(left, right);
     T p = tab[pivotIndex], temp = tab[right];
     tab[right] = tab[pivotIndex];
     tab[pivotIndex] = temp;

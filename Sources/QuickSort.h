@@ -12,7 +12,7 @@ private:
     int pivot;
     void quicksort(T *tab, int left, int right);
     int partition(T *tab, int left, int right);
-    int getPivotIndex(T *tab, int left, int right) const;
+    [[nodiscard]] int getPivotIndex(int left, int right) const;
 public:
     QuickSort(T *tab, int tabSize, int pivot);
     ~QuickSort();
