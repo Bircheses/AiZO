@@ -2,6 +2,16 @@
 #include <iostream>
 
 template<typename T>
+bool Sort<T>::isSortCorrect() {
+    for(int i=0; i<tabSize-1; i++){
+        if(tabCopy[i]>tabCopy[i+1]){
+            return false;
+        }
+    }
+    return true;
+}
+
+template<typename T>
 void Sort<T>::printTab() {
     for(int i=0; i<tabSize; i++){
         std::cout << tabCopy[i] << " ";

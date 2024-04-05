@@ -10,9 +10,9 @@ template<typename T>
 class QuickSort : public Sort<T>{
 private:
     int pivot;
-    void quicksort(T *tab, int l, int r);
+    void quicksort(T *tab, int left, int right);
     int partition(T *tab, int left, int right);
-    int getPivot(T *tab, int left, int right) const;
+    int getPivotIndex(T *tab, int left, int right) const;
 public:
     QuickSort(T *tab, int tabSize, int pivot);
     ~QuickSort();

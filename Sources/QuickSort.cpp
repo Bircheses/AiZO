@@ -21,50 +21,43 @@ void QuickSort<T>::sort() {
 }
 
 template<typename T>
-void QuickSort<T>::quicksort(T *tab, int l, int r) {
-    if(l<r) {
-        int m = partition(tab, l, r);
-        quicksort(tab, l, m - 1);
-        quicksort(tab, m + 1, r);
+int QuickSort<T>::getPivotIndex(T *tab, int left, int right) const {
+    if(pivot==1) return left;
+    else if(pivot==2) return (right-left)/2+left;
+    else if(pivot==3) return right;
+    else if(pivot==4){
+        srand(time(NULL));
+        return rand()%(right-left)+left;
+    }
+}
+
+template<typename T>
+void QuickSort<T>::quicksort(T *tab, int left, int right) {
+    if (left < right) {
+        int m = partition(tab, left, right);
+        quicksort(tab, left, m - 1);
+        quicksort(tab, m + 1, right);
     }
 }
 
 template<typename T>
 int QuickSort<T>::partition(T *tab, int left, int right) {
-    int p = getPivot(tab, left, right);
-    int i = left-1;
-    for(int j=left; j<=right; j++){
-        if(tab[j]<p){
+    int pivotIndex = getPivotIndex(tab, left, right);
+    //Zmiana wartości
+    T p = tab[pivotIndex], temp = tab[right];
+    tab[right] = tab[pivotIndex];
+    tab[pivotIndex] = temp;
+    int i = left - 1, j = left;
+    while(j<right){
+        if(tab[j]<p) {
             i++;
-            Sort<T>::swap(&tab[i],&tab[j]);
+            Sort<T>::swap(&tab[i], &tab[j]);
         }
+        j++;
     }
-    Sort<T>::swap(&tab[i+1],&tab[right]);
-    return i+1;
-    /*int l = left, r = right;
-    while (true) {
-        while (tab[l] < p) ++l;
-        while (tab[r] > p) --r;
-        if (l < r) {
-            Sort::swap(&tab[r], &tab[l]);
-            ++l;
-            --r;
-        } else {
-            if (r == right) r--;
-            return r;
-        }
-    }*/
-}
-
-template<typename T>
-int QuickSort<T>::getPivot(T *tab, int left, int right) const {
-    if(pivot==1) return tab[left];
-    else if(pivot==2) return tab[(right-left)/2+left];
-    else if(pivot==3) return tab[right];
-    else if(pivot==4){
-        srand(time(NULL));
-        return tab[rand()%(right-left)+left];
-    }
+    i++;
+    Sort<T>::swap(&tab[i],&tab[right]);
+    return i;
 }
 
 template class QuickSort<int>;

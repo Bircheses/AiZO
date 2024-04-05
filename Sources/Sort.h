@@ -10,6 +10,7 @@ private:
     T *tabCopy = nullptr;
     int tabSize = 0;
 public:
+    virtual bool isSortCorrect();
     virtual void printTab();
     virtual void deleteTab();
     T *getTabCopy();

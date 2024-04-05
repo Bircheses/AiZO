@@ -199,12 +199,12 @@ template<typename T>
 void insertion_sort() {
     int n;
     bool out = false;
+    system("CLS");
     InsertionSort<T> insertionSort(tab<T>, tabSize);
     Counter counter;
     counter.start();
     insertionSort.sort();
     counter.stop();
-    system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
@@ -233,12 +233,12 @@ template<typename T>
 void heap_sort(){
     int n;
     bool out = false;
+    system("CLS");
     HeapSort<T> heapSort(tab<T>, tabSize);
     Counter counter;
     counter.start();
     heapSort.sort();
     counter.stop();
-    system("CLS");
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
@@ -301,20 +301,19 @@ template<typename T>
 void shell_sort(int choice){
     int n;
     bool out = false;
+    system("CLS");
     ShellSort<T> shellSort(tab<T>, tabSize);
     if(choice==1){
         Counter counter;
         counter.start();
         shellSort.shellalgsort();
         counter.stop();
-        system("CLS");
         cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     }else if(choice==2){
         Counter counter;
         counter.start();
         shellSort.sedgewickalgsort();
         counter.stop();
-        system("CLS");
         cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     }
     while (!out) {

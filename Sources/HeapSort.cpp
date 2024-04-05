@@ -4,7 +4,6 @@ template<typename T>
 HeapSort<T>::HeapSort(T *tab, int tabSize){
     Sort<T>::setTabSize(tabSize);
     Sort<T>::setTabCopy(tab);
-    HeapSort::createHeap(Sort<T>::getTabCopy(), Sort<T>::getTabSize());
 }
 
 template<typename T>
@@ -15,6 +14,7 @@ HeapSort<T>::~HeapSort() {
 template<typename T>
 void HeapSort<T>::sort() {
     T *temp = Sort<T>::getTabCopy();
+    HeapSort::createHeap(temp, Sort<T>::getTabSize());
     for(int i=1;i<=Sort<T>::getTabSize();i++) {
         Sort<T>::swap(&temp[0], &temp[Sort<T>::getTabSize() - i]);
         fixHeapDown(temp, 0, Sort<T>::getTabSize() - i);

@@ -12,7 +12,7 @@ private:
 public:
     void start();
     void stop();
-    double getElapsedTime() const;
+    [[nodiscard]] double getElapsedTime() const;
 };
 
 
