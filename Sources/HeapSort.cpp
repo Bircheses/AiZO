@@ -15,10 +15,11 @@ template<typename T>
 void HeapSort<T>::sort() {
     T *temp = Sort<T>::getTabCopy();
     HeapSort::createHeap(temp, Sort<T>::getTabSize());
-    for(int i=1;i<=Sort<T>::getTabSize();i++) {
+    for(int i=1;i<Sort<T>::getTabSize();i++) {
         Sort<T>::swap(&temp[0], &temp[Sort<T>::getTabSize() - i]);
         fixHeapDown(temp, 0, Sort<T>::getTabSize() - i);
     }
+    if(temp[0]>temp[1]) Sort<T>::swap(&temp[0], &temp[1]);
 }
 
 template<typename T>

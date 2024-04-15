@@ -35,7 +35,7 @@ template<typename T>
 void QuickSort<T>::quicksort(T *tab, int left, int right) {
     if (left < right) {
         int m = partition(tab, left, right);
-        quicksort(tab, left, m - 1);
+        quicksort(tab, left, m);
         quicksort(tab, m + 1, right);
     }
 }
@@ -43,20 +43,20 @@ void QuickSort<T>::quicksort(T *tab, int left, int right) {
 template<typename T>
 int QuickSort<T>::partition(T *tab, int left, int right) {
     int pivotIndex = getPivotIndex(left, right);
-    T p = tab[pivotIndex], temp = tab[right];
-    tab[right] = tab[pivotIndex];
-    tab[pivotIndex] = temp;
-    int i = left - 1, j = left;
-    while(j<right){
-        if(tab[j]<p) {
-            i++;
-            Sort<T>::swap(&tab[i], &tab[j]);
-        }
-        j++;
+    T pivot = tab[pivotIndex];
+    if(pivotIndex==right) {
+        Sort<T>::swap(&tab[pivotIndex], &tab[left]);
+        pivot = tab[left];
     }
-    i++;
-    Sort<T>::swap(&tab[i],&tab[right]);
-    return i;
+    int i = left, j = right;
+    while(true) {
+        while (tab[i] < pivot && i<=j) i++;
+        while (tab[j] > pivot && i<=j) j--;
+        if(i >= j) return j;
+        Sort<T>::swap(&tab[i],&tab[j]);
+        i++;
+        j--;
+    }
 }
 
 template class QuickSort<int>;
