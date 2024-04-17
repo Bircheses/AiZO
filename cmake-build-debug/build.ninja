@@ -91,6 +91,12 @@ build CMakeFiles/Aizo.dir/Sources/HeapSort.cpp.obj: CXX_COMPILER__Aizo_unscanned
   OBJECT_DIR = CMakeFiles\Aizo.dir
   OBJECT_FILE_DIR = CMakeFiles\Aizo.dir\Sources
 
+build CMakeFiles/Aizo.dir/StaticFunctions.cpp.obj: CXX_COMPILER__Aizo_unscanned_Debug C$:/Users/Szef/CLionProjects/Aizo/StaticFunctions.cpp || cmake_object_order_depends_target_Aizo
+  DEP_FILE = CMakeFiles\Aizo.dir\StaticFunctions.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Aizo.dir
+  OBJECT_FILE_DIR = CMakeFiles\Aizo.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Aizo
@@ -99,7 +105,7 @@ build CMakeFiles/Aizo.dir/Sources/HeapSort.cpp.obj: CXX_COMPILER__Aizo_unscanned
 #############################################
 # Link the executable Aizo.exe
 
-build Aizo.exe: CXX_EXECUTABLE_LINKER__Aizo_Debug CMakeFiles/Aizo.dir/MainMenu.cpp.obj CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj CMakeFiles/Aizo.dir/Counter.cpp.obj CMakeFiles/Aizo.dir/Sources/QuickSort.cpp.obj CMakeFiles/Aizo.dir/Sources/ShellSort.cpp.obj CMakeFiles/Aizo.dir/Sources/HeapSort.cpp.obj
+build Aizo.exe: CXX_EXECUTABLE_LINKER__Aizo_Debug CMakeFiles/Aizo.dir/MainMenu.cpp.obj CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj CMakeFiles/Aizo.dir/Counter.cpp.obj CMakeFiles/Aizo.dir/Sources/QuickSort.cpp.obj CMakeFiles/Aizo.dir/Sources/ShellSort.cpp.obj CMakeFiles/Aizo.dir/Sources/HeapSort.cpp.obj CMakeFiles/Aizo.dir/StaticFunctions.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Aizo.dir

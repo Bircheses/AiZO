@@ -1,14 +1,12 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-#include <thread>
+#include <algorithm>
 
 #include "Counter.h"
 #include "Sources/InsertionSort.h"
 #include "Sources/QuickSort.h"
 #include "Sources/ShellSort.h"
 #include "Sources/HeapSort.h"
+#include "StaticFunctions.cpp"
 
 using namespace std;
 
@@ -16,100 +14,123 @@ template<typename T> T *tab;
 int tabSize;
 
 template<typename T> void menu();
-template<typename T> void read_from_file(int j, string url);
-template<typename T> void generate_table();
-template<typename T> void show_array();
-template<typename T> void run_sort();
-template<typename T> void insertion_sort();
-template<typename T> void heap_sort();
-template<typename T> void quick_sort(int pivot);
-template<typename T> void shell_sort(int choice);
+template<typename T> void all_sort_menu();
+template<typename T> void insertion_sort_menu();
+template<typename T> void heap_sort_menu();
+template<typename T> void quick_sort_menu(int pivot);
+template<typename T> void shell_sort_menu(int choice);
 template<typename T> void symulacja();
-template<typename T> void temp();
+template<typename T> void symulacja_temp(int algorithm_choice);
 
 template<typename T>
 void symulacja(){
-    int k=0, pom, j;
-    string url;
-    string tableName;
-    tableName = "Random";
-    //tableName = "SortedAscend";
-    //tableName = "SortedDescend";
-    //tableName = "33%";
-    //tableName = "66%";
     for(tabSize=10000; tabSize<=640000; tabSize*=2) {
-        j=0;
-        pom = tabSize/1000;
-        url = "Tablice/Float/" + tableName + "/" + to_string(pom) + "k/";
         for (int i = 0; i < 100; i++) {
-            read_from_file<T>(++j, url);
-            temp<T>();
-            //thread t1(temp<T>);
-            //Sleep(100);
-            //read_from_file<T>(++j, url);
-            //thread t2(temp<T>);
-            /*Sleep(100);
-            read_from_file<T>(++j, url);
-            thread t3(temp<T>);
-            Sleep(100);
-            read_from_file<T>(++j, url);
-            thread t4(temp<T>);
-            Sleep(100);
-            read_from_file<T>(++j, url);
-            thread t5(temp<T>);
-            t3.join();
-            t4.join();
-            t5.join();*/
-            //t1.join();
-            //t2.join();
+            tab<T> = generate_table<T>(tab<T>, tabSize);
+            //sortAscendigly(tab<T>, tabSize);
+            //sortDescendigly(tab<T>, tabSize);
+            //sort33<T>(tab<T>, tabSize);
+            //sort66<T>(tab<T>, tabSize);
+            symulacja_temp<T>(1);
         }
         cout << "space" << endl;
     }
-    cout << "end" << endl;
-    cin >> k;
+    char a;
+    cin >> a;
 }
 
 template<typename T>
-void temp(){
+void symulacja_temp(int algorithm_choice){
     Counter counter;
-    //InsertionSort<T> insertionSort(tab<T>,tabSize);
-    HeapSort<T> heapSort(tab<T>, tabSize);
-    //ShellSort<T> shellSort(tab<T>, tabSize);
-    //QuickSort<T> quickSort(tab<T>, tabSize, 1);
-    //QuickSort<T> quickSort(tab<T>, tabSize, 2);
-    //QuickSort<T> quickSort(tab<T>, tabSize, 3);
-    //QuickSort<T> quickSort(tab<T>, tabSize, 4);
-    counter.start();
-    //insertionSort.sort();
-    heapSort.sort();
-    //shellSort.shellalgsort();
-    //shellSort.sedgewickalgsort();
-    //quickSort.sort();
-    counter.stop();
-    cout << counter.getElapsedTime() << " " << heapSort.isSortCorrect() << endl;
+    switch (algorithm_choice) {
+        case 1:{
+            InsertionSort<T> insertionSort(tab<T>,tabSize);
+            counter.start();
+            insertionSort.sort();
+            counter.stop();
+            break;
+        }
+        case 2:{
+            HeapSort<T> heapSort(tab<T>, tabSize);
+            counter.start();
+            heapSort.sort();
+            counter.stop();
+            break;
+        }
+        case 3:{
+            ShellSort<T> shellSort(tab<T>, tabSize);
+            counter.start();
+            shellSort.shellalgsort();
+            counter.stop();
+            break;
+        }
+        case 4:{
+            ShellSort<T> shellSort(tab<T>, tabSize);
+            counter.start();
+            shellSort.sedgewickalgsort();
+            counter.stop();
+            break;
+        }
+        case 5:{
+            QuickSort<T> quickSort(tab<T>, tabSize, 1);
+            counter.start();
+            quickSort.sort();
+            counter.stop();
+            break;
+        }
+        case 6:{
+            QuickSort<T> quickSort(tab<T>, tabSize, 2);
+            counter.start();
+            quickSort.sort();
+            counter.stop();
+            break;
+        }
+        case 7:{
+            QuickSort<T> quickSort(tab<T>, tabSize, 3);
+            counter.start();
+            quickSort.sort();
+            counter.stop();
+            break;
+        }
+        case 8:{
+            QuickSort<T> quickSort(tab<T>, tabSize, 4);
+            counter.start();
+            quickSort.sort();
+            counter.stop();
+            break;
+        }
+    }
+    cout << counter.getElapsedTime() << " " << endl;
 }
 
 int main() {
     char c;
-    cout << "Pracujemy na int, czy float?" << endl;
-    cout << "i-int" << endl;
-    cout << "f-float" << endl;
-    cin >> c;
-    system("CLS");
-    if(c=='i') {
-        menu<int>();
-        //symulacja<int>();
-        delete[] tab<int>;
-    }else if(c=='f'){
-        menu<float>();
-        delete[] tab<float>;
+    bool out = false;
+    while (!out) {
+        system("CLS");
+        cout << "Wybierz na jakich typach chcesz pracowac" << endl;
+        cout << "i-Int" << endl;
+        cout << "f-Float" << endl;
+        cout << "0-Wyjscie z programu" << endl;
+        cin >> c;
+        system("CLS");
+        if (c == 'i') {
+            menu<int>();
+            //symulacja<int>();
+            delete[] tab<int>;
+        } else if (c == 'f') {
+            menu<float>();
+            //symulacja<float>();
+            delete[] tab<float>;
+        } else if (c == '0') {
+            out = true;
+        }
     }
     return 0;
 }
 
 template<typename T>
 void menu() {
-    srand(time(NULL));
     bool out = false;
     while (!out) {
         int n;
@@ -118,11 +139,11 @@ void menu() {
         cout << "2-Wygeneruj tablice o zadanym rozmiarze" << endl;
         cout << "3-Wyswietl tablice na ekranie" << endl;
         cout << "4-Przeprowadz sortowanie" << endl;
-        cout << "0-Zakoncz program" << endl;
+        cout << "0-Wroc do poprzedniego menu" << endl;
         cin >> n;
         switch (n) {
             case 1: {
-                //read_from_file<T>();
+                tab<T> = read_from_file<T>(tab<T>, tabSize);
                 break;
             }
             case 2: {
@@ -130,20 +151,20 @@ void menu() {
                 cout << "Podaj wielkosc tablicy:" << endl;
                 cin >> tabSize;
                 system("CLS");
-                generate_table<T>();
+                tab<T> = generate_table<T>(tab<T>, tabSize);
                 break;
             }
             case 3: {
                 system("CLS");
                 if (tab<T> != NULL) {
-                    show_array<T>();
+                    show_array<T>(tab<T>, tabSize);
                 } else cout << "Tablica jest pusta!" << endl;
                 break;
             }
             case 4: {
                 system("CLS");
                 if (tab<T> != NULL) {
-                    run_sort<T>();
+                    all_sort_menu<T>();
                 } else cout << "Tablica jest pusta!" << endl;
                 break;
             }
@@ -161,51 +182,7 @@ void menu() {
 }
 
 template<typename T>
-void read_from_file(int j, string url) {
-    int pom, i;
-    /*system("CLS");
-    cout << "Podaj nazwe pliku tekstowego (bez rozszerzenia)" << endl;
-    cin >> url;
-    system("CLS");*/
-    ifstream file(url + to_string(j) + ".txt");
-    delete [] tab<T>;
-    if (file.is_open()) {
-        i = 0;
-        while (file >> pom) {
-            if (i == 0) {
-                tabSize = pom;
-                tab<T> = new T[tabSize];
-            } else tab<T>[i - 1] = pom;
-            i++;
-        }
-    } else cout << "Niepoprawna nazwa pliku!" << endl;
-}
-
-template<typename T>
-void generate_table() {
-    delete[] tab<T>;
-    tab<T> = new T[tabSize];
-    if(std::numeric_limits<T>::is_integer) {
-        for (int i = 0; i < tabSize; i++) {
-            tab<T>[i] = rand() % 9999 + 1;
-        }
-    }else{
-        for (int i = 0; i < tabSize; i++) {
-            tab<T>[i] = (rand() % 99 + 1)+((float)(rand())/(float)(RAND_MAX));
-        }
-    }
-}
-
-template<typename T>
-void show_array() {
-    for (int i = 0; i < tabSize; i++) {
-        cout << tab<T>[i] << " ";
-    }
-    cout << endl;
-}
-
-template<typename T>
-void run_sort() {
+void all_sort_menu() {
     int n;
     bool out = false;
     while (!out) {
@@ -218,11 +195,11 @@ void run_sort() {
         cin >> n;
         switch (n) {
             case 1: {
-                insertion_sort<T>();
+                insertion_sort_menu<T>();
                 break;
             }
             case 2: {
-                heap_sort<T>();
+                heap_sort_menu<T>();
                 break;
             }
             case 3: {
@@ -232,7 +209,7 @@ void run_sort() {
                 cout << "1-O(n^2) Shell'a" << endl;
                 cout << "2-O(n^4/3) Sedgewick'a" << endl;
                 cin >> choice;
-                shell_sort<T>(choice);
+                shell_sort_menu<T>(choice);
                 break;
             }
             case 4: {
@@ -244,7 +221,7 @@ void run_sort() {
                 cout << "3-prawy" << endl;
                 cout << "4-losowy" << endl;
                 cin >> pivot;
-                quick_sort<T>(pivot);
+                quick_sort_menu<T>(pivot);
                 break;
             }
             case 0: {
@@ -261,7 +238,7 @@ void run_sort() {
 }
 
 template<typename T>
-void insertion_sort() {
+void insertion_sort_menu() {
     int n;
     bool out = false;
     system("CLS");
@@ -273,12 +250,19 @@ void insertion_sort() {
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
+        cout << "2-Sprawdz poprawnosc posortowania" << endl;
         cout << "0-Wroc do poprzedniego menu" << endl;
         cin >> n;
         switch (n) {
             case 1: {
                 system("CLS");
                 insertionSort.printTab();
+                break;
+            }
+            case 2: {
+                system("CLS");
+                if(insertionSort.isSortCorrect()) cout << "True" << endl;
+                else cout << "False" << endl;
                 break;
             }
             case 0: {
@@ -295,7 +279,7 @@ void insertion_sort() {
 }
 
 template<typename T>
-void heap_sort(){
+void heap_sort_menu(){
     int n;
     bool out = false;
     system("CLS");
@@ -308,12 +292,19 @@ void heap_sort(){
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
+        cout << "2-Sprawdz poprawnosc posortowania" << endl;
         cout << "0-Wroc do poprzedniego menu" << endl;
         cin >> n;
         switch (n) {
             case 1: {
                 system("CLS");
                 heapSort.printTab();
+                break;
+            }
+            case 2: {
+                system("CLS");
+                if(heapSort.isSortCorrect()) cout << "True" << endl;
+                else cout << "False" << endl;
                 break;
             }
             case 0: {
@@ -330,7 +321,7 @@ void heap_sort(){
 }
 
 template<typename T>
-void quick_sort(int pivot) {
+void quick_sort_menu(int pivot) {
     int n;
     bool out = false;
     system("CLS");
@@ -342,12 +333,19 @@ void quick_sort(int pivot) {
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms " << endl;
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
+        cout << "2-Sprawdz poprawnosc posortowania" << endl;
         cout << "0-Wroc do poprzedniego menu" << endl;
         cin >> n;
         switch (n) {
             case 1: {
                 system("CLS");
                 quickSort.printTab();
+                break;
+            }
+            case 2: {
+                system("CLS");
+                if(quickSort.isSortCorrect()) cout << "True" << endl;
+                else cout << "False" << endl;
                 break;
             }
             case 0: {
@@ -364,7 +362,7 @@ void quick_sort(int pivot) {
 }
 
 template<typename T>
-void shell_sort(int choice){
+void shell_sort_menu(int choice){
     int n;
     bool out = false;
     system("CLS");
@@ -384,12 +382,19 @@ void shell_sort(int choice){
     }
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;
+        cout << "2-Sprawdz poprawnosc posortowania" << endl;
         cout << "0-Wroc do poprzedniego menu" << endl;
         cin >> n;
         switch (n) {
             case 1: {
                 system("CLS");
                 shellSort.printTab();
+                break;
+            }
+            case 2: {
+                system("CLS");
+                if(shellSort.isSortCorrect()) cout << "True" << endl;
+                else cout << "False" << endl;
                 break;
             }
             case 0: {

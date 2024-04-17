@@ -45,8 +45,8 @@ int QuickSort<T>::partition(T *tab, int left, int right) {
     int pivotIndex = getPivotIndex(left, right);
     T pivot = tab[pivotIndex];
     if(pivotIndex==right) {
-        Sort<T>::swap(&tab[pivotIndex], &tab[left]);
-        pivot = tab[left];
+        Sort<T>::swap(&tab[pivotIndex], &tab[right-1]);
+        pivot = tab[right-1];
     }
     int i = left, j = right;
     while(true) {

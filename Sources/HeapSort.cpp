@@ -31,15 +31,15 @@ void HeapSort<T>::createHeap(T *tabCopy, int tabSize) {
 
 template<typename T>
 void HeapSort<T>::fixHeapDown(T *tabCopy, int i, int tabSize) {
-    if (tabCopy[2*i+1]>=tabCopy[2*i+2]) {
-        if (tabCopy[2*i+1]>tabCopy[i]) {
+    if (tabCopy[2*i+1]>=tabCopy[2*i+2]) {  //Porównanie dwóch potomków
+        if (tabCopy[2*i+1]>tabCopy[i]) {  //Porównanie lewego potomka z rodzicem
             Sort<T>::swap(&tabCopy[i], &tabCopy[2*i+1]);
-            if(2*i+1<=(tabSize-2)/2) fixHeapDown(tabCopy, 2*i+1, tabSize);
+            if(2*i+1<=(tabSize-2)/2) fixHeapDown(tabCopy, 2*i+1, tabSize); //Sprawdzenie czy prawy potomek jest rodzicem
         }
     } else {
-        if (tabCopy[2*i+2] > tabCopy[i] && 2*i+2 < tabSize) {
+        if (tabCopy[2*i+2] > tabCopy[i] && 2*i+2 < tabSize) { //Porównanie prawego potomka z rodzicem oraz sprawdzenie czy prawy potomek nie jest już posortowany
             Sort<T>::swap(&tabCopy[i], &tabCopy[2*i+2]);
-            if(2*i+2<=(tabSize-2)/2) fixHeapDown(tabCopy, 2*i+2, tabSize);
+            if(2*i+2<=(tabSize-2)/2) fixHeapDown(tabCopy, 2*i+2, tabSize); //Sprawdzenie czy lewy potomek jest rodzicem
         }
     }
 }
