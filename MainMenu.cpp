@@ -288,7 +288,6 @@ void heap_sort_menu(){
     counter.start();
     heapSort.sort();
     counter.stop();
-    cout << heapSort.isSortCorrect() << endl;
     cout << "Posortowano tablice w czasie " << counter.getElapsedTime() << " ms" << endl;
     while (!out) {
         cout << "1-Wyswietl posortowana tablice" << endl;

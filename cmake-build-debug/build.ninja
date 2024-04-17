@@ -107,6 +107,7 @@ build CMakeFiles/Aizo.dir/StaticFunctions.cpp.obj: CXX_COMPILER__Aizo_unscanned_
 
 build Aizo.exe: CXX_EXECUTABLE_LINKER__Aizo_Debug CMakeFiles/Aizo.dir/MainMenu.cpp.obj CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj CMakeFiles/Aizo.dir/Counter.cpp.obj CMakeFiles/Aizo.dir/Sources/QuickSort.cpp.obj CMakeFiles/Aizo.dir/Sources/ShellSort.cpp.obj CMakeFiles/Aizo.dir/Sources/HeapSort.cpp.obj CMakeFiles/Aizo.dir/StaticFunctions.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -static
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Aizo.dir
   POST_BUILD = cd .
