@@ -1,7 +1,8 @@
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
-#include "Counter.h"
+#include "Sources/Counter.h"
 #include "Sources/InsertionSort.h"
 #include "Sources/QuickSort.h"
 #include "Sources/ShellSort.h"
@@ -14,6 +15,7 @@ template<typename T> T *tab;
 int tabSize;
 
 template<typename T> void menu();
+template<typename T> void read_from_file();
 template<typename T> void all_sort_menu();
 template<typename T> void insertion_sort_menu();
 template<typename T> void heap_sort_menu();
@@ -31,7 +33,7 @@ void symulacja(){
             //sortDescendigly(tab<T>, tabSize);
             //sort33<T>(tab<T>, tabSize);
             //sort66<T>(tab<T>, tabSize);
-            symulacja_temp<T>(1);
+            symulacja_temp<T>(8);
         }
         cout << "space" << endl;
     }
@@ -103,6 +105,30 @@ void symulacja_temp(int algorithm_choice){
     cout << counter.getElapsedTime() << " " << endl;
 }
 
+template<typename T>
+void read_from_file() {
+    string url;
+    int pom, i;
+    system("CLS");
+    cout << "Podaj nazwe pliku tekstowego (bez rozszerzenia)" << endl;
+    cin >> url;
+    system("CLS");
+    ifstream file(url + ".txt");
+    delete [] tab<T>;
+    if (file.is_open()) {
+        i = 0;
+        while (file >> pom) {
+            if (i == 0) {
+                tabSize = pom;
+                tab<T> = new T[tabSize];
+            } else tab<T>[i - 1] = pom;
+            i++;
+        }
+    } else {
+        cout << "Niepoprawna nazwa pliku!" << endl;
+    }
+}
+
 int main() {
     char c;
     bool out = false;
@@ -143,7 +169,7 @@ void menu() {
         cin >> n;
         switch (n) {
             case 1: {
-                tab<T> = read_from_file<T>(tab<T>, tabSize);
+                read_from_file<T>();
                 break;
             }
             case 2: {

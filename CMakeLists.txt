@@ -10,8 +10,8 @@ add_executable(Aizo
         Sources/Sort.h
         Sources/InsertionSort.cpp
         Sources/InsertionSort.h
-        Counter.cpp
-        Counter.h
+        Sources/Counter.cpp
+        Sources/Counter.h
         Sources/QuickSort.cpp
         Sources/QuickSort.h
         Sources/ShellSort.cpp

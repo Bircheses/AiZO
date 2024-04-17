@@ -1,15 +1,12 @@
 # ninja log v5
-7	1451	7350580540613437	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
+3	1304	7350841941179890	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
 2	72	7350580526806577	CMakeFiles/Aizo.dir/Sources/InsertionSort.cpp.obj	9776210e14efa966
 1	337	7328318156754603	CMakeFiles/Aizo.dir/main.cpp.obj	5810517dc9a7f28e
-1451	1736	7350580543415850	Aizo.exe	add882a5ec0f5fde
+1304	1630	7350841944412669	Aizo.exe	63f8a9d8eb6ab757
 5	349	7350580529583962	CMakeFiles/Aizo.dir/Sources/Sort.cpp.obj	4da1afb258b39649
-1	108	7350585728930067	build.ninja	772e1c422cb00f38
+1	108	7350843102583836	build.ninja	772e1c422cb00f38
 17	1076	7350580536865215	CMakeFiles/Aizo.dir/Counter.cpp.obj	56e2088aad6e3457
 12	365	7350580529754110	CMakeFiles/Aizo.dir/Sources/QuickSort.cpp.obj	7018d8aef0cd400b
 14	87	7350580526966714	CMakeFiles/Aizo.dir/Sources/ShellSort.cpp.obj	ae91a833eef88583
 10	80	7350580526886647	CMakeFiles/Aizo.dir/Sources/HeapSort.cpp.obj	3a903494131263d3
-20	447	7350580530574834	CMakeFiles/Aizo.dir/StaticFunctions.cpp.obj	46b472b1f81a7769
-4	293	7350585746513528	Aizo.exe	63f8a9d8eb6ab757
-3	1312	7350587232628647	CMakeFiles/Aizo.dir/MainMenu.cpp.obj	f421a7d05bd5ed09
-1312	1599	7350587235466078	Aizo.exe	63f8a9d8eb6ab757
+6	334	7350841931486576	CMakeFiles/Aizo.dir/StaticFunctions.cpp.obj	46b472b1f81a7769

@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits>
-#include <fstream>
 #include <algorithm>
 
 using namespace std;
@@ -88,28 +87,4 @@ T* generate_table(T* ptr, int tabSize) {
         }
     }
     return tab;
-}
-
-template<typename T>
-T* read_from_file(T* ptr, int tabSize) {
-    string url;
-    int pom, i;
-    T *tab;
-    system("CLS");
-    cout << "Podaj nazwe pliku tekstowego (bez rozszerzenia)" << endl;
-    cin >> url;
-    system("CLS");
-    ifstream file(url + ".txt");
-    delete [] ptr;
-    if (file.is_open()) {
-        i = 0;
-        while (file >> pom) {
-            if (i == 0) {
-                tabSize = pom;
-                tab = new T[tabSize];
-            } else tab[i - 1] = pom;
-            i++;
-        }
-        return tab;
-    } else cout << "Niepoprawna nazwa pliku!" << endl;
 }
