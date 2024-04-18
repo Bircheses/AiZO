@@ -33,7 +33,7 @@ void symulacja(){
             //sortDescendigly(tab<T>, tabSize);
             //sort33<T>(tab<T>, tabSize);
             //sort66<T>(tab<T>, tabSize);
-            symulacja_temp<T>(8);
+            symulacja_temp<T>(2);
         }
         cout << "space" << endl;
     }
